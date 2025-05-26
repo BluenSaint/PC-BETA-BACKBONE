@@ -19,6 +19,7 @@ import { RedisModule } from './redis/redis.module';
 import { CacheModule } from './cache/cache.module';
 import { RateLimitModule } from './rate-limit/rate-limit.module';
 import { TestModule } from './test/test.module';
+import { StripeModule } from './stripe/stripe.module';
 
 @Module({
   imports: [
@@ -89,6 +90,7 @@ import { TestModule } from './test/test.module';
     CacheModule,
     RateLimitModule,
     TestModule,
+    StripeModule,
     
     // Feature modules
     AuthModule,
