@@ -1,38 +1,21 @@
-FROM node:20-alpine AS build
+FROM node:16-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
+# Copy package files
 COPY package*.json ./
 
-RUN npm ci
-
-COPY . .
-
-RUN npm run build
-
-FROM node:20-alpine AS production
-
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-
+# Install dependencies
 RUN npm ci --omit=dev
 
-COPY --from=build /usr/src/app/dist ./dist
-COPY --from=build /usr/src/app/node_modules ./node_modules
+# Copy application code
+COPY . .
 
-# Create a non-root user to run the app
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nestjs -u 1001
+# Build the application
+RUN npm run build
 
-# Change ownership of the working directory to the nestjs user
-RUN chown -R nestjs:nodejs /usr/src/app
-
-USER nestjs
-
+# Expose port
 EXPOSE 3000
 
+# Start the application
 CMD ["node", "dist/main"]
