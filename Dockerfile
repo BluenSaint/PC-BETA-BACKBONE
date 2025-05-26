@@ -10,6 +10,9 @@ COPY package*.json ./
 # Removed prepare script from package.json to completely eliminate husky install errors
 RUN npm install --omit=dev --legacy-peer-deps
 
+# Install NestJS CLI globally for build process
+RUN npm install -g @nestjs/cli
+
 # Copy application code
 COPY . .
 
