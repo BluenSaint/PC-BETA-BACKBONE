@@ -1,0 +1,20 @@
+{
+  "name": "pc-beta-backbone-backend",
+  "version": "1.0.0",
+  "description": "A modern NestJS backend for the PC Beta Backbone platform with comprehensive authentication, user management, content management, and email notification features.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BluenSaint/PC-BETA-BACKBONE-BACKEND.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BluenSaint/PC-BETA-BACKBONE-BACKEND/issues"
+  },
+  "homepage": "https://github.com/BluenSaint/PC-BETA-BACKBONE-BACKEND#readme"
+}
