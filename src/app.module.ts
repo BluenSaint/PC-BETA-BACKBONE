@@ -15,6 +15,10 @@ import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { EmailModule } from './email/email.module';
 import { HealthModule } from './health/health.module';
+import { RedisModule } from './redis/redis.module';
+import { CacheModule } from './cache/cache.module';
+import { RateLimitModule } from './rate-limit/rate-limit.module';
+import { TestModule } from './test/test.module';
 
 @Module({
   imports: [
@@ -79,6 +83,12 @@ import { HealthModule } from './health/health.module';
     
     // Health checks
     TerminusModule,
+    
+    // Redis and related modules
+    RedisModule,
+    CacheModule,
+    RateLimitModule,
+    TestModule,
     
     // Feature modules
     AuthModule,

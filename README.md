@@ -1,8 +1,8 @@
+# PC-BETA-BACKBONE
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
-
-# PC-BETA-BACKBONE
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
@@ -27,11 +27,63 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Features
+
+- **Authentication**: JWT-based authentication with role-based access control
+- **User Management**: User registration, profile management, and admin controls
+- **Content Management**: Post creation, editing, and publishing with categories and tags
+- **Email Notifications**: Automated email notifications for various system events
+- **Redis Integration**: Upstash Redis integration for caching and rate limiting
+- **API Documentation**: Swagger UI for API documentation and testing
+- **Health Checks**: Endpoint monitoring and system health status
+
+## Redis Integration
+
+This project uses Upstash Redis for caching and rate limiting. The integration provides:
+
+- **Caching**: API response caching with configurable TTL
+- **Rate Limiting**: Request rate limiting to prevent abuse
+- **Distributed Locking**: Coordination between multiple instances
+
+### Test Endpoints
+
+The following endpoints are available to test Redis functionality:
+
+- `GET /test/redis`: Tests basic Redis connection and operations
+- `GET /test/cache`: Tests the caching service
+- `GET /test/rate-limit`: Tests the rate limiting service
+
 ## Project setup
 
 ```bash
 $ npm install
 ```
+
+## Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```
+DATABASE_URL=postgresql://postgres:password@localhost:5432/pc_beta_backbone
+JWT_SECRET=your_jwt_secret_key_here
+PORT=3000
+NODE_ENV=development
+FRONTEND_URL=http://localhost:4200
+
+# Email Configuration
+MAIL_HOST=smtp.example.com
+MAIL_PORT=587
+MAIL_USER=user@example.com
+MAIL_PASSWORD=your_mail_password
+MAIL_FROM=noreply@pcbetabackbone.com
+MAIL_SECURE=false
+
+# Upstash Redis Configuration
+UPSTASH_REDIS_REST_URL=your_upstash_redis_url_here
+UPSTASH_REDIS_REST_TOKEN=your_upstash_redis_token_here
+```
+
+For production deployment on Railway, make sure to set these environment variables in the Railway dashboard.
 
 ## Compile and run the project
 
@@ -63,14 +115,13 @@ $ npm run test:cov
 
 When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Railway Deployment
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+This project is configured for deployment on Railway. To deploy:
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+1. Push your changes to the GitHub repository
+2. Railway will automatically detect changes and start the deployment
+3. Ensure all environment variables are properly configured in Railway
 
 ## Resources
 
