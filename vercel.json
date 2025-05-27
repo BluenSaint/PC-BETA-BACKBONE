@@ -1,0 +1,51 @@
+{
+  "version": 2,
+  "buildCommand": "next build",
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "regions": ["iad1"],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Credentials", "value": "true" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
+        { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/login", "destination": "/login" },
+    { "source": "/login/", "destination": "/login" },
+    { "source": "/signup", "destination": "/signup" },
+    { "source": "/signup/", "destination": "/signup" },
+    { "source": "/admin/control", "destination": "/admin/control" },
+    { "source": "/admin/control/", "destination": "/admin/control" },
+    { "source": "/admin/control/client/add", "destination": "/admin/control/client/add" },
+    { "source": "/admin/control/client/add/", "destination": "/admin/control/client/add" },
+    { "source": "/admin/control/dispute-timer", "destination": "/admin/control/dispute-timer" },
+    { "source": "/admin/control/dispute-timer/", "destination": "/admin/control/dispute-timer" },
+    { "source": "/admin/control/client/:id", "destination": "/admin/control/client/[id]" },
+    { "source": "/admin/control/client/:id/", "destination": "/admin/control/client/[id]" },
+    { "source": "/admin/control/bulk-letters", "destination": "/admin/control/bulk-letters" },
+    { "source": "/admin/control/bulk-letters/", "destination": "/admin/control/bulk-letters" },
+    { "source": "/admin/control/export", "destination": "/admin/control/export" },
+    { "source": "/admin/control/export/", "destination": "/admin/control/export" },
+    { "source": "/admin/control/letter-generator", "destination": "/admin/control/letter-generator" },
+    { "source": "/admin/control/letter-generator/", "destination": "/admin/control/letter-generator" }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/login", "dest": "/login" },
+    { "src": "/signup", "dest": "/signup" },
+    { "src": "/admin/control", "dest": "/admin/control" },
+    { "src": "/admin/control/client/add", "dest": "/admin/control/client/add" },
+    { "src": "/admin/control/dispute-timer", "dest": "/admin/control/dispute-timer" },
+    { "src": "/admin/control/client/([^/]+)", "dest": "/admin/control/client/[id]?id=$1" },
+    { "src": "/admin/control/bulk-letters", "dest": "/admin/control/bulk-letters" },
+    { "src": "/admin/control/export", "dest": "/admin/control/export" },
+    { "src": "/admin/control/letter-generator", "dest": "/admin/control/letter-generator" },
+    { "src": "/(.*)", "status": 404, "dest": "/404" }
+  ]
+}
